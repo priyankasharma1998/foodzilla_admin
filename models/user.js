@@ -43,9 +43,16 @@ module.exports.getUserByName = function(name, callback){
 	User.find(name, callback);
 }
 
+
 module.exports.comparePassword = function(candidatePassword, hash, callback){
 	bcrypt.compare(candidatePassword, hash, function(err, isMatch) {
     	if(err) throw err;
     	callback(null, isMatch);
 	});
+}
+
+
+// fetch all customer details to display to admin
+module.exports.getAllUsers = function(callback){
+	User.find(callback);
 }
